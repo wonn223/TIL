@@ -105,6 +105,6 @@ switch (true) {
 // 모든 case가 실행되는 것도 아니기 때문에 간단하게 값을 설정하는게 낫다.
 
 // label, break, continue 등을 잘 사용하면 불필요한 함수 사용을 줄일 수 있다.
-// 현대에는 if, for와 같은 조건/반복문으로 명시적인 goto구문(break와 contiune)ㄴ없이도 흐름을 제어한다.
+// 현대에는 if, for와 같은 조건/반복문으로 명시적인 goto구문(break와 contiune)없이도 흐름을 제어한다.
 
 // quiz 정답 14;
