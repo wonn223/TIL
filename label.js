@@ -4,7 +4,7 @@
 // labe의 형식 식별자와 콜론 그리고 블록
 dd: 각주 대신 이렇게 label을 이용하기도 한다;
 
-// 셋의 종류
+// label set의 종류
 // 1.label set
 k:{
     // 자유변수 
@@ -107,4 +107,4 @@ switch (true) {
 // label, break, continue 등을 잘 사용하면 불필요한 함수 사용을 줄일 수 있다.
 // 현대에는 if, for와 같은 조건/반복문으로 명시적인 goto구문(break와 contiune)ㄴ없이도 흐름을 제어한다.
 
-// 정답 14;
+// quiz 정답 14;
