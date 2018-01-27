@@ -37,7 +37,7 @@ class MurderRobot extends Robot {
 }
 
 class MurderRobotDog extends MurderRobot {
-    // 이 클래스의 인스턴스는 bark, drive, clean같은 불필요한 메소드까지 가지게 된다.(바나나를 가진 고릴라)
+    // 이 클래스의 인스턴스는 drive, clean같은 불필요한 메소드까지 가지게 된다.(바나나를 가진 고릴라)
 }
 
 
