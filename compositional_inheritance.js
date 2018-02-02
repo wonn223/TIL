@@ -27,6 +27,11 @@ class GameObject {
     bark(){};
 }
 
+class Animal extends GameObject {
+    poop(){}
+}
+//(이하 동물 클래스 생략)
+
 class Robot extends GameObject {
     drive(){};
     clean(){};
@@ -73,6 +78,7 @@ const killer = (state) => ({
 
 
 const murderRobotDog = (name) => {
+    // 
     let state = {
         name,
         speed: 100,
