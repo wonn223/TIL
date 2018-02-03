@@ -33,6 +33,7 @@ const IIterator = class {
 
 //ㄴ. 이터러블 인터페이스
 interface Iterable<T> {
+    //심볼은 대괄호를 사용한다
     [Symbol.iterator]() : Iterator<T>;
 }
 
