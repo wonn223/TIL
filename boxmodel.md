@@ -37,13 +37,12 @@
 
 
  * 보더 박스 모델:  왼쪽이 보더가 5px일 때, 오른쪽이 20px일 때
- 
+ ~~~
 <body style="padding:0px; margin:0px">
     <div style="display:inline-block;margin: 10px; width: 100px; height:100px; background:blue; box-sizing:border-box; border: 5px solid black;"></div>
     <div style="display:inline-block; margin: 10px; width: 100px; height:100px; background:blue; box-sizing:border-box; border: 20px solid black;"></div>
 </body>
-
-
+~~~
 
  #### 고전 박스 모델 + 확장된 CSS 모듈
  전체 레이아웃에 영향을 주지 않으면서, 박스 주변에 테두리를 그릴 수 있는 방법이 소개되었다.
@@ -54,14 +53,16 @@
  css레이아웃에 영향을 미치지 않으므로, 옆에 있는 요소가 그림자로 인해 다음 줄로 밀리는 현상은 없다. 다만 `outline`속성이나 `position:relative`를 가진 다른 요소로 인해 겹쳐질 수는 있다. shadow에게 영역을 주고 싶다면 shadow로 늘어진 영역만큼 박스에 마진값을 주면 된다. 만약 보더 안쪽에 shadow를 적용하고 싶다면, box-shadow 적용 시 inset을 입력하면 된다. 그러면 아래와 같은 결과를 볼 수 있다.
 
 * 보더 안쪽에 적용한 모습
+~~~
     <body style="padding:0px; margin:0px">
         <div style="box-shadow: inset 0 0 10px 10px purple; margin: 10px; width: 100px; height:100px; background:blue; box-sizing:border-box; border: 10px solid black;"></div>
     </body>
-
+~~~
 * position:relative로 인해 shadow가 뒤로 밀린 모습
 
     여기서 노멀 플로우(position:static)를 따르는 속성의 z-index 를 relatvie 속성으로 바꿀 수 있다는 점을 알 수 있다.
-
+    
+~~~
     <style>
     div { width:100px; 
           height:100px;
@@ -71,12 +72,13 @@
 
     <div style="background:brown; position:relative;">
     </div><div style="box-shadow: 0 0 10px 10px purple; background:blue;"></div>
+~~~
 
 * outline으로 겹쳐진 모습
 
-
+    ~~~
     <div style="box-shadow: inset 0 0 10px 10px purple; margin: 10px; width: 100px; height:100px; background:blue; box-sizing:border-box; border: 10px solid black; outline: 5px solid white;"></div>
-
+    ~~~
 2. outline
 
  보더 바깥 영역에 테두리를 그릴 수 있는 방법 중 하나. box-shadow로 나온 테두리를 덮는다.
@@ -96,7 +98,7 @@ https://www.youtube.com/watch?v=msoT99yzukE&t=1272s
 
 
 * HTML문서에서 공백 제거 후
-
+~~~
 <!-- 공백 제거 -->
 <div style="background:brown; width:100px; 
           height:100px;
@@ -104,6 +106,6 @@ https://www.youtube.com/watch?v=msoT99yzukE&t=1272s
 </div><div style="background:olive; width:100px; 
           height:100px;
           display: inline-block;"></div>
-
+~~~
 #### border의 dashed속성
 `solid`와 다르게 점선으로 표현되는데, 이 속성을 적용하고 나면 baackground가 보더 영역까지 적용되는 것을 알 수 있다. 
