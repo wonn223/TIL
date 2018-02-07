@@ -7,7 +7,7 @@ const Renderer = class {
     clear(){}
     render(data){
         // 렌더링에 쓰기로 정했던 타입 Data인지 체크
-        if(data instanceof Data) throw 'invalid data type';
+        if(!(data instanceof Data)) throw 'invalid data type';
         this._render();
     }
     // 일단 this._render를 호출하려면 초기화가 필요하므로, 아래와 같이 설정해놓는다.
