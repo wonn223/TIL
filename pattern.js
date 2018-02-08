@@ -97,3 +97,44 @@ const mixin = (receiver, supplier) => {
     return receiver;
 }
 
+// 전략 패턴으로 문을 객체화하기
+const attack = (weapon, option) => {
+    switch(weapon) {
+        case 'sword': 
+        if(option) {
+            console.log(`you used a sword with skill ${option}`)
+        } else {
+            console.log('err');
+        }
+        break;
+        case 'bow' : 
+        if(option) {
+            console.log(`you used a sword with skill ${option}`)
+        } else {
+            console.log('err');
+        }
+        break;
+        default: 'default';
+    }
+}
+
+// switch문을 따로 빼서
+const attack = (weapon,option) => {
+    const opt = option;
+    console.log(option);
+    weapons[weapon](opt);
+}
+
+// 라우터 테이블로 만든다
+const weapons = {
+    'sword' : (opt) => {
+        console.log(`you used a sword with skill ${opt}`);
+    },
+    'bow' : (opt) => {
+        console.log(`you used a bow with skill ${opt}`)
+    }
+};
+
+
+attack('sword', 3);
+attack('bow', 2);
