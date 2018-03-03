@@ -114,3 +114,43 @@ class ToyDuck extends Duck {
 // 하지만 ToyDuck은 기반 타입의 메소드를 동일하게 구현하지 않음.
 // 또한 클래스의 의미 상 가짜 Duck은 Duck의 모든 행위를 대신할 수 없다. 따라서 리스코브 치환 법칙에 위배된다.
 
+
+// ISP
+// 클래스 인스턴스가 불필요한 규약을 따르지 않아야 한다는 원칙
+// a인터페이스에서 optMethod는 모든 구현체에 필요한 게 아니라서 따로 뺀다.
+const interfA = (name) => ({
+        type: name,
+        methodA : () => console.log('this is method'),
+        methodB : () => console.log('this is method'),
+        // optMethod : () => console.log('this is optional')
+})
+
+
+// optMethod 인터페이스 따로 구성.
+const optInterB = (name) => ({
+    type : name,
+    optMethod : () => console.log('this is optional method')
+})
+
+// 두 인터페이스가 필요한 구현체라면?
+const concreteObj = () => {
+    const InterA = interfA('interface1')
+    const InterB = optInterB('interface2');    
+    const composite = Object.create(InterA);
+    return Object.assign(composite, InterB);
+}
+
+const result = concreteObj();
+console.log(result); // { type: 'interface2', optMethod: [Function: optMethod] }
+
+console.log(result.__proto__); // { type: 'interface1',methodA: [Function: methodA], methodB: [Function: methodB] }
+
+
+
+
+// const newInterface = fn => ({
+//     calculate : () => fn
+// })
+
+// const getInt = newInterface(() => console.log('calculating'));
+// const result = Object.assign(Object.create(obj), getInt);
