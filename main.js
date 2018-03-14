@@ -1,11 +1,3 @@
-// 데이터 로딩하고 json변환
-// const loader = new Loader('data.json');
-// loader.load( json => {
-    // renderer.send(json);
-// })
-
-// 껍데기는 최종적으로 보면 중요하지 않다.
-
 const Data = (_=>{
     return class {
         constructor(){
@@ -46,6 +38,7 @@ const JSONData = class extends Data {
 }
 // 렌더러와 데이터가 아무 json데이터를 보내지 않게, 딱 필요한 데이터만 보내게 
 // 규약을 정해주는 클래스
+// 바꾼 최종값을 게터로  
 // ? 여기서는 왜 심볼을 안 쓸까
 const Info = class {
     constructor(json) {
