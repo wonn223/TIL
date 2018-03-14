@@ -33,5 +33,5 @@ for(let i = 0; i< 3; i++){
 console.log(a); // ["DIV", "DIV"]
 
 ````
-`document`란 호스트 오브젝트가 있어서 DOM 객체(divElement)에 자바스크립트 for문을 적용할 수 있다. 다른 언어에서 똑같은 결과를 만드려면, `document`의 메소드를 쓰지 않고, 직접 new 생성자로 div엘리먼트를 5번 만들어야 했다.
+`document`란 호스트 오브젝트가 있어서 DOM 객체(divElement)에 자바스크립트 for문을 적용할 수 있다. 다른 언어에서 똑같은 결과를 만드려면, `document`의 메소드를 쓰지 않고, 직접 new 생성자로 div엘리먼트를 2번 만들어야 했다.
 
