@@ -116,7 +116,7 @@ const MacBookDecorator = ( _ => {
         checkType(macbook){
             return MacInterface.ensureImplements(macbook);
         }
-    
+        // 새 기능성을 추가한다 
         add4GBRam(){
             total += 70;
             return console.log(this.macbook.add4GBRam() + `: $70`);
