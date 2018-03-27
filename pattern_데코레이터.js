@@ -23,7 +23,7 @@ truckInstance.setModel = modelName => {
 truckInstance.setColor = color => {
     this.color = color;
 }
-// 인스턴스가 가지고 있던 기존의 프로퍼티를 건드리지 않고 getter/setter역할을 하는 함수를 추가했다.
+// 인스턴스가 가지고 있던 기존의 프로퍼티를 건드리지 않고 setter역할을 하는 함수를 추가했다.
 
 
 // 간단한 예제 2
