@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h3>개발자 도구로 확인</h3>
+    <script>
+        // db열기. 해당 db가 없었으면 만든다.
+        // 2번째 인자(number) : 버전
+        const request = indexedDB.open('library');
+        let db;
+
+        // 첫 연결 or 트랜잭션 처리 완료 후
+        request.onsuccess = () => {
+            console.log('connection success');
+            db = request.result;
+            console.log('onsuccess', db);
+            getTransaction();
+        }
+        
+        request.onerror = (event) => {
+            return console.log(event.target.error);
+        }
+
+        request.onupgradeneeded = event => {
+            console.log('event', event)
+
+            // 인덱스db open결과가 담김
+            // 이전에 열어둔 db가 있으면 그 db가 열린다 
+            db = request.result;
+            // console.log('upgrade', db);
+
+            const store = db.createObjectStore("movies", { keyPath: 'isbn'});
+            
+            console.log('store', store);
+            
+            // To add an index to our object store
+            const titleIndex = store.createIndex('by_title', 'title', {unique: false});
+            const authorIndex = store.createIndex('by_author', 'author', {unique: false});
+            const isbnIndex = store.createIndex('by_isbn', 'isbn', {unique: false})
+            
+            // populate with initial data
+            store.put({ isbn: 1234, title: "QueryMeories", author:"Fred"});
+            store.put({ isbn: 22344, title: "wWater Buffaloes", author:"Fred"});
+            store.put({ isbn: 12, title: "Bedlock nights", author:"Nick"});
+        }
+
+
+        // db에 데이터 작업
+        const getTransaction = _ => {
+
+            // open a transaction connection to the database object 
+            const tx = db.transaction('movies', 'readonly');
+
+            //  to select which object store to use for our request 
+            const store = tx.objectStore('movies');
+            
+            const index = store.index('by_title');
+
+            // 55line transaction 2번째 인자 readwrite일 때
+            // const req2  = store.add({isbn : 1});
+            // req2.onsuccess = event => {
+                // console.log(event);
+            // }
+                
+            // 55line transaction 2번째 인자 readwrite일 때
+            // 레코드 지울 때
+            // delete(primarykey)
+            // const req3 = store.delete(22344);
+            // req3.onsuccess = event => {
+                // console.log(event);
+            // }            
+            // tx.oncomplete = event => {
+                // console.log('done');
+            // }
+
+            // read from db 
+            // get 인자 : key로 지정한
+            const req = index.get("Bedlock nights");
+
+            req.onsuccess = () => {
+                console.log('req.result', req.result);
+                const matching = req.result;
+                if(matching === undefined) {
+                    throw 'invalid type'
+                } else {
+                    console.log(`title: ${matching.title} / author: ${matching.author}`)
+                }
+            }
+            req.onerror = (event) => {
+                return console.log(event.target.error);
+            }
+        }
+    </script>
+</body>
+</html>
