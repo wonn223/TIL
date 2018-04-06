@@ -14,7 +14,7 @@
         const request = indexedDB.open('library');
         let db;
 
-        // 첫 연결 or 트랜잭션 처리 완료 후
+        // 첫 연결 or 리퀘스트 처리 완료 후(여기선 library 디비를 열고 나서)
         request.onsuccess = () => {
             console.log('connection success');
             db = request.result;
@@ -22,10 +22,11 @@
             getTransaction();
         }
         
+        // 예외 처리(를 해야하나 그냥 콘솔..)
         request.onerror = (event) => {
             return console.log(event.target.error);
         }
-
+    
         request.onupgradeneeded = event => {
             console.log('event', event)
 
