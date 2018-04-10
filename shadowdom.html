@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="slot-test">
+        쉐도우 돔 영역입니다.
+        <span slot="title">TITLE</span>
+    </div>
+    <button id="btn">로그인 회원만 가능</button>
+    <p>shadow DOM 바깥 영역입니다.</p>
+    <script>
+        // pseudo code
+        const btn = document.getElementById('btn');
+        btn.addEventListener('click', event => {
+            if(event.target === btn) alert('로그인이 필요한 서비스입니다')
+            return ;
+        })
+    </script>
+    <script>
+        document.querySelector('#slot-test')
+        .attachShadow({mode: 'open' })
+        .innerHTML = `<h1>this is shadow DOM</h1>
+        <h2><slot name="title"></span></h2>
+        `;
+    </script>
+</body>
+</html>
